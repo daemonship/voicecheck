@@ -1,0 +1,1 @@
+"""VoiceCheck backend application."""
