@@ -38,7 +38,7 @@ async def test_get_characters_returns_detected_characters(client: AsyncClient):
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": manuscript}
+        data={"text": manuscript}
     )
     project_id = project_response.json()["id"]
     
@@ -70,7 +70,7 @@ async def test_characters_include_dialogue_line_count(client: AsyncClient):
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": manuscript}
+        data={"text": manuscript}
     )
     project_id = project_response.json()["id"]
     
@@ -103,7 +103,7 @@ async def test_characters_under_20_lines_include_warning(client: AsyncClient):
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": manuscript}
+        data={"text": manuscript}
     )
     project_id = project_response.json()["id"]
     
@@ -135,7 +135,7 @@ async def test_zero_dialogue_returns_empty_list_with_message(client: AsyncClient
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": manuscript}
+        data={"text": manuscript}
     )
     project_id = project_response.json()["id"]
     
@@ -166,7 +166,7 @@ async def test_merge_characters_combines_dialogue_lines(client: AsyncClient):
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": manuscript}
+        data={"text": manuscript}
     )
     project_id = project_response.json()["id"]
     
@@ -198,7 +198,7 @@ async def test_merge_with_nonexistent_id_returns_404(client: AsyncClient):
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": '"Hello," said Alice.'}
+        data={"text": '"Hello," said Alice.'}
     )
     project_id = project_response.json()["id"]
     
@@ -221,7 +221,7 @@ async def test_merge_same_character_returns_400(client: AsyncClient):
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": '"Hello," said Alice.'}
+        data={"text": '"Hello," said Alice.'}
     )
     project_id = project_response.json()["id"]
     
@@ -252,7 +252,7 @@ async def test_after_merge_original_ids_return_404(client: AsyncClient):
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": manuscript}
+        data={"text": manuscript}
     )
     project_id = project_response.json()["id"]
     
@@ -290,7 +290,7 @@ async def test_character_names_exist_in_manuscript(client: AsyncClient):
     
     project_response = await client.post(
         "/api/projects",
-        json={"text": manuscript}
+        data={"text": manuscript}
     )
     project_id = project_response.json()["id"]
     
